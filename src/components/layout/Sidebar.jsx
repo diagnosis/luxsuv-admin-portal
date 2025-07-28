@@ -6,7 +6,7 @@ import {
   FiCalendar,
   FiTruck,
   FiTarget,
-  FiBarChart3,
+  FiBarChart,
   FiBell,
   FiSettings,
   FiLogOut,
@@ -19,7 +19,7 @@ const navigation = [
   { name: 'Bookings', href: '/bookings', icon: FiCalendar },
   { name: 'Drivers', href: '/drivers', icon: FiTruck },
   { name: 'Assignments', href: '/assignments', icon: FiTarget },
-  { name: 'Analytics', href: '/analytics', icon: FiBarChart3 },
+  { name: 'Analytics', href: '/analytics', icon: FiBarChart },
   { name: 'Notifications', href: '/notifications', icon: FiBell },
   { name: 'Settings', href: '/settings', icon: FiSettings, adminOnly: true },
 ];

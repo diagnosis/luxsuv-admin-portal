@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { bookingAPI } from '../../lib/api';
 import BookingTable from '../../components/bookings/BookingTable';
 import BookingFilters from '../../components/bookings/BookingFilters';
-import BookingStats from '../../components/bookings/BookingStats';
+import BookingStats from '../../components/bookings/BookingStats.jsx';
 
 export const Route = createFileRoute('/_authenticated/bookings')({
   component: BookingsPage,

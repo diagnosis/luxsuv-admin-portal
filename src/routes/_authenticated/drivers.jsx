@@ -5,7 +5,7 @@ import { driverAPI } from '../../lib/api';
 import DriverTable from '../../components/drivers/DriverTable';
 import DriverFilters from '../../components/drivers/DriverFilters';
 import DriverStats from '../../components/drivers/DriverStats';
-import DriverMapView from '../../components/drivers/DriverMapView';
+import DriverMapView from '../../components/drivers/DriverMapView.jsx';
 import { FiMap, FiList } from 'react-icons/fi';
 
 export const Route = createFileRoute('/_authenticated/drivers')({
