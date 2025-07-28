@@ -10,7 +10,7 @@ import {
   FiBell,
   FiSettings,
   FiLogOut,
-  FiCrown
+  FiCrosshair
 } from 'react-icons/fi';
 
 const navigation = [
@@ -42,7 +42,7 @@ export default function Sidebar() {
       <div className="flex items-center h-16 px-6 border-b border-gray-200">
         <div className="flex items-center">
           <div className="flex items-center justify-center w-8 h-8 bg-primary-600 rounded-lg">
-            <FiCrown className="w-5 h-5 text-white" />
+            <FiCrosshair className="w-5 h-5 text-white" />
           </div>
           <div className="ml-3">
             <h1 className="text-lg font-semibold text-gray-900">LuxSUV</h1>
