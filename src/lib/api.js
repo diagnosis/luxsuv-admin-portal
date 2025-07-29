@@ -54,13 +54,7 @@ export const userAPI = {
     };
     return api.post('/register', userData);
   },
-  updateUser: (id, data) => {
-    if (data.role) {
-      return api.put(`/admin/users/${id}/role`, { role: data.role });
-    }
-    // For other updates, we might need additional endpoints
-    return Promise.reject(new Error('Only role updates are supported'));
-  },
+  updateUser: (id, data) => api.put(`/admin/users/${id}/role`, { role: data.role }),
   deleteUser: (id) => api.delete(`/admin/users/${id}`),
 };
 

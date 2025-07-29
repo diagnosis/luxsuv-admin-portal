@@ -5,7 +5,7 @@ const stats = [
     name: 'Total Bookings',
     value: 'total_bookings',
     icon: FiUsers,
-    color: 'bg-blue-500',
+    color: 'bg-primary-500',
     change: '+15.5%',
     changeType: 'positive'
   },
@@ -13,7 +13,7 @@ const stats = [
     name: 'Total Revenue',
     value: 'total_revenue',
     icon: FiDollarSign,
-    color: 'bg-green-500',
+    color: 'bg-success-500',
     change: '+12.3%',
     changeType: 'positive',
     format: 'currency'
@@ -22,7 +22,7 @@ const stats = [
     name: 'Active Drivers',
     value: 'active_drivers',
     icon: FiTruck,
-    color: 'bg-purple-500',
+    color: 'bg-accent-500',
     change: '+2',
     changeType: 'positive'
   },
@@ -30,7 +30,7 @@ const stats = [
     name: 'Customer Satisfaction',
     value: 'customer_satisfaction',
     icon: FiStar,
-    color: 'bg-yellow-500',
+    color: 'bg-warning-500',
     change: '+0.2',
     changeType: 'positive',
     format: 'rating'

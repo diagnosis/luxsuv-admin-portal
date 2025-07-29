@@ -207,8 +207,8 @@ export default function CreateUserModal({ onClose, onSuccess }) {
           </div>
 
           {createUserMutation.error && (
-            <div className="rounded-md bg-error-50 p-4">
-              <p className="text-sm text-error-600">
+            <div className="rounded-md bg-red-50 p-4">
+              <p className="text-sm text-red-600">
                 {createUserMutation.error.response?.data?.error || 'Failed to create user'}
               </p>
             </div>

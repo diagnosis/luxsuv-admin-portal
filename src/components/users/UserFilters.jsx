@@ -41,7 +41,7 @@ export default function UserFilters({ filters, onFilterChange, availableFilters 
             className="input"
           >
             <option value="">All Roles</option>
-            {availableFilters?.roles?.map(role => (
+            {(availableFilters?.roles || ['rider', 'driver', 'super_driver', 'dispatcher', 'admin']).map(role => (
               <option key={role} value={role}>
                 {role.replace('_', ' ').charAt(0).toUpperCase() + role.replace('_', ' ').slice(1)}
               </option>
@@ -57,7 +57,7 @@ export default function UserFilters({ filters, onFilterChange, availableFilters 
             className="input"
           >
             <option value="">All Statuses</option>
-            {availableFilters?.statuses?.map(status => (
+            {(availableFilters?.statuses || ['active', 'inactive', 'suspended']).map(status => (
               <option key={status} value={status}>
                 {status.charAt(0).toUpperCase() + status.slice(1)}
               </option>

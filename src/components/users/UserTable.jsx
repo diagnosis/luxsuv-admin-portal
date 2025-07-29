@@ -42,7 +42,7 @@ export default function UserTable({ data, isLoading, error, onPageChange, onRefr
   if (error) {
     return (
       <div className="text-center py-8">
-        <p className="text-error-600 mb-4">Failed to load users</p>
+        <p className="text-red-600 mb-4">Failed to load users: {error.message}</p>
         <button onClick={onRefresh} className="btn-primary">
           Retry
         </button>
@@ -50,8 +50,8 @@ export default function UserTable({ data, isLoading, error, onPageChange, onRefr
     );
   }
 
-  const users = data?.users || [];
-  const pagination = data?.pagination || {};
+  const users = data?.data?.users || data?.users || [];
+  const pagination = data?.data?.pagination || data?.pagination || {};
 
   const handleSelectAll = (checked) => {
     if (checked) {

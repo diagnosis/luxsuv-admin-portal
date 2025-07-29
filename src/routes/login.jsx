@@ -31,10 +31,10 @@ function LoginPage() {
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-accent-50 to-accent-100">
       <div className="max-w-md w-full space-y-8 p-8">
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full bg-primary-600">
+          <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full bg-primary-500">
             <FiLogIn className="h-6 w-6 text-white" />
           </div>
           <h2 className="mt-6 text-3xl font-bold text-gray-900">
@@ -136,8 +136,8 @@ function LoginPage() {
             </div>
 
             {error && (
-              <div className="rounded-md bg-error-50 p-4">
-                <p className="text-sm text-error-600">{error}</p>
+              <div className="rounded-md bg-red-50 p-4">
+                <p className="text-sm text-red-600">{error}</p>
               </div>
             )}
 

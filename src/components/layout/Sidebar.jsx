@@ -41,7 +41,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="flex items-center h-16 px-6 border-b border-gray-200">
         <div className="flex items-center">
-          <div className="flex items-center justify-center w-8 h-8 bg-primary-600 rounded-lg">
+          <div className="flex items-center justify-center w-8 h-8 bg-primary-500 rounded-lg">
             <FiCrosshair className="w-5 h-5 text-white" />
           </div>
           <div className="ml-3">
@@ -54,8 +54,8 @@ export default function Sidebar() {
       {/* User Info */}
       <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center">
-          <div className="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-full">
-            <span className="text-sm font-medium text-primary-600">
+          <div className="flex items-center justify-center w-10 h-10 bg-accent-100 rounded-full">
+            <span className="text-sm font-medium text-accent-600">
               {user?.username?.charAt(0)?.toUpperCase() || 'A'}
             </span>
           </div>
@@ -76,7 +76,7 @@ export default function Sidebar() {
               to={item.href}
               className={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                 isActive
-                  ? 'bg-primary-100 text-primary-700 border-r-2 border-primary-600'
+                  ? 'bg-accent-100 text-accent-700 border-r-2 border-accent-600'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >
