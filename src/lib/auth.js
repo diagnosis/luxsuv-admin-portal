@@ -58,32 +58,41 @@ export const useAuthStore = create(
       },
 
       checkAuth: async () => {
+        set({ isLoading: true });
         const token = localStorage.getItem('admin_token');
         const user = localStorage.getItem('admin_user');
         
         if (!token || !user) {
-          set({ isAuthenticated: false });
+          set({ 
+            isAuthenticated: false, 
+            isLoading: false,
+            user: null,
+            token: null
+          });
           return false;
         }
 
         try {
-          set({ isLoading: true });
-          await authAPI.validateToken();
+          // Validate token by calling /users/me
+          const response = await authAPI.validateToken();
           set({
-            user: JSON.parse(user),
+            user: response.data || JSON.parse(user),
             token,
             isAuthenticated: true,
-            isLoading: false
+            isLoading: false,
+            error: null
           });
           return true;
         } catch (error) {
+          console.error('Token validation failed:', error);
           localStorage.removeItem('admin_token');
           localStorage.removeItem('admin_user');
           set({
             user: null,
             token: null,
             isAuthenticated: false,
-            isLoading: false
+            isLoading: false,
+            error: null
           });
           return false;
         }

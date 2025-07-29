@@ -23,9 +23,15 @@ function LoginPage() {
     },
     onSubmit: async ({ value }) => {
       clearError();
-      const result = await login(value);
-      if (result.success) {
-        window.location.href = '/dashboard';
+      try {
+        const result = await login(value);
+        if (result.success) {
+          // Use router navigation instead of window.location
+          window.location.href = '/dashboard';
+        }
+      } catch (error) {
+        // Error is already handled in the auth store
+        console.error('Login failed:', error);
       }
     },
   });

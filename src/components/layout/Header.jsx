@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useAuthStore } from '../../lib/auth';
 import { notificationAPI } from '../../lib/api';
-import { FiBell, FiSearch, FiRefreshCw } from 'react-icons/fi';
+import { FiBell, FiSearch, FiRefreshCw, FiLogOut, FiUser } from 'react-icons/fi';
 
 export default function Header() {
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const { user, logout } = useAuthStore();
   
   const { data: notifications, refetch: refetchNotifications } = useQuery({
     queryKey: ['notifications', { limit: 5 }],
@@ -13,6 +16,17 @@ export default function Header() {
   });
 
   const unreadCount = notifications?.summary?.unread || 0;
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      window.location.href = '/login';
+    } catch (error) {
+      console.error('Logout failed:', error);
+      // Force logout even if API call fails
+      window.location.href = '/login';
+    }
+  };
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
@@ -111,7 +125,51 @@ export default function Header() {
             )}
           </div>
         </div>
+          {/* User Menu */}
+          <div className="relative">
+            <button
+              onClick={() => setShowUserMenu(!showUserMenu)}
+              className="flex items-center space-x-2 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <div className="flex items-center justify-center w-8 h-8 bg-primary-100 rounded-full">
+                <span className="text-sm font-medium text-primary-600">
+                  {user?.username?.charAt(0)?.toUpperCase() || 'U'}
+                </span>
+              </div>
+            </button>
+
+            {showUserMenu && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                <div className="p-3 border-b border-gray-200">
+                  <p className="text-sm font-medium text-gray-900">{user?.username}</p>
+                  <p className="text-xs text-gray-500">{user?.email}</p>
+                  <p className="text-xs text-primary-600 capitalize">{user?.role}</p>
+                </div>
+                
+                <div className="p-1">
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                  >
+                    <FiLogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
       </div>
+      
+      {/* Click outside to close menus */}
+      {(showNotifications || showUserMenu) && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => {
+            setShowNotifications(false);
+            setShowUserMenu(false);
+          }}
+        />
+      )}
     </header>
   );
 }

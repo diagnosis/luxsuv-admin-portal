@@ -34,9 +34,14 @@ api.interceptors.response.use(
 // Auth API
 export const authAPI = {
   login: (credentials) => api.post('/login', credentials),
-  logout: () => api.post('/logout'),
-  // Remove getSession as it doesn't exist in the backend
-  validateToken: () => api.get('/users/me'), // Use the existing endpoint to validate token
+  logout: () => {
+    // The backend has a POST /logout endpoint that clears cookies
+    return api.post('/logout').catch(() => {
+      // Even if logout fails, we should clear local storage
+      return Promise.resolve();
+    });
+  },
+  validateToken: () => api.get('/users/me'),
 };
 
 // User Management API

@@ -12,7 +12,9 @@ function AuthenticatedLayout() {
   const { isAuthenticated, isLoading, checkAuth } = useAuthStore();
 
   useEffect(() => {
-    checkAuth();
+    if (!isAuthenticated) {
+      checkAuth();
+    }
   }, [checkAuth]);
 
   if (isLoading) {
