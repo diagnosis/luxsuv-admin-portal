@@ -68,7 +68,7 @@ export const useAuthStore = create(
 
         try {
           set({ isLoading: true });
-          await authAPI.getSession();
+          await authAPI.validateToken();
           set({
             user: JSON.parse(user),
             token,

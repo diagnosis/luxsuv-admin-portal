@@ -23,7 +23,7 @@ function DriversPage() {
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['drivers', filters],
-    queryFn: () => driverAPI.getDrivers(filters).then(res => res.data),
+    queryFn: () => driverAPI.getDrivers(filters),
     refetchInterval: 15000, // Refresh every 15 seconds for location updates
   });
 

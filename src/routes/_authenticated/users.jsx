@@ -23,7 +23,7 @@ function UsersPage() {
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['users', filters],
-    queryFn: () => userAPI.getUsers(filters).then(res => res.data),
+    queryFn: () => userAPI.getUsers(filters),
     keepPreviousData: true,
   });
 

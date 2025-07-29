@@ -13,7 +13,7 @@ const statusColors = {
 export default function RecentBookings() {
   const { data, isLoading } = useQuery({
     queryKey: ['recent-bookings'],
-    queryFn: () => bookingAPI.getBookings({ limit: 5, sort: 'created_at:desc' }).then(res => res.data),
+    queryFn: () => bookingAPI.getBookings({ limit: 5 }).then(res => res.data),
     refetchInterval: 30000,
   });
 
