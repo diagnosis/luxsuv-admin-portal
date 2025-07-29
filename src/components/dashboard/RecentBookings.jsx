@@ -14,7 +14,7 @@ export default function RecentBookings() {
   // Hook must be called first, consistently
   const { data, isLoading } = useQuery({
     queryKey: ['recent-bookings'],
-    queryFn: () => bookingAPI.getBookings({ limit: 5 }).then(res => res.data),
+    queryFn: () => bookingAPI.getBookings({ limit: 5 }),
     refetchInterval: 30000,
   });
 

@@ -11,7 +11,7 @@ export default function Header() {
   
   const { data: notifications, refetch: refetchNotifications } = useQuery({
     queryKey: ['notifications', { limit: 5 }],
-    queryFn: () => notificationAPI.getNotifications({ limit: 5 }).then(res => res.data),
+    queryFn: () => notificationAPI.getNotifications({ limit: 5 }),
     refetchInterval: 30000,
   });
 

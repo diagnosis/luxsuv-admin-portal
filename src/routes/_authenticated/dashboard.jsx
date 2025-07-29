@@ -14,7 +14,7 @@ function DashboardPage() {
   // All hooks must be called consistently, regardless of early returns
   const { data: dashboardData, isLoading, error } = useQuery({
     queryKey: ['dashboard-analytics'],
-    queryFn: () => analyticsAPI.getDashboard().then(res => res.data),
+    queryFn: () => analyticsAPI.getDashboard(),
     refetchInterval: 30000, // Refresh every 30 seconds
   });
 

@@ -18,7 +18,7 @@ export default function NotificationCenter() {
   // Hook must be called first, consistently
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['dashboard-notifications'],
-    queryFn: () => notificationAPI.getNotifications({ limit: 10 }).then(res => res.data),
+    queryFn: () => notificationAPI.getNotifications({ limit: 10 }),
     refetchInterval: 30000,
   });
 

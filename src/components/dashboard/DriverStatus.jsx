@@ -12,7 +12,7 @@ export default function DriverStatus() {
   // Hook must be called first, consistently
   const { data, isLoading } = useQuery({
     queryKey: ['driver-status'],
-    queryFn: () => driverAPI.getDrivers({ limit: 8 }).then(res => res.data),
+    queryFn: () => driverAPI.getDrivers({ limit: 8 }),
     refetchInterval: 15000,
   });
 
