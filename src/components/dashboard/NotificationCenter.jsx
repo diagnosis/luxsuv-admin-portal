@@ -15,6 +15,7 @@ const priorityIcons = {
 };
 
 export default function NotificationCenter() {
+  // Hook must be called first, consistently
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['dashboard-notifications'],
     queryFn: () => notificationAPI.getNotifications({ limit: 10 }),
@@ -30,6 +31,7 @@ export default function NotificationCenter() {
     }
   };
 
+  // Early return after hooks
   if (isLoading) {
     return (
       <div className="card">

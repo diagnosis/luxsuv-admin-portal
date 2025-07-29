@@ -9,12 +9,14 @@ const statusColors = {
 };
 
 export default function DriverStatus() {
+  // Hook must be called first, consistently
   const { data, isLoading } = useQuery({
     queryKey: ['driver-status'],
     queryFn: () => driverAPI.getDrivers({ limit: 8 }),
     refetchInterval: 15000,
   });
 
+  // Early return after hooks
   if (isLoading) {
     return (
       <div className="card">

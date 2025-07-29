@@ -11,12 +11,14 @@ export const Route = createFileRoute('/_authenticated/dashboard')({
 });
 
 function DashboardPage() {
+  // All hooks must be called consistently, regardless of early returns
   const { data: dashboardData, isLoading, error } = useQuery({
     queryKey: ['dashboard-analytics'],
     queryFn: () => analyticsAPI.getDashboard(),
     refetchInterval: 30000, // Refresh every 30 seconds
   });
 
+  // Early returns after all hooks are called
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -35,7 +37,7 @@ function DashboardPage() {
   if (error) {
     return (
       <div className="text-center py-12">
-        <p className="text-error-600">Failed to load dashboard data</p>
+        <p className="text-red-600">Failed to load dashboard data</p>
         <button 
           onClick={() => window.location.reload()} 
           className="btn-primary mt-4"
