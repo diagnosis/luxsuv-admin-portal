@@ -24,7 +24,7 @@ function BookingsPage() {
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['bookings', filters],
-    queryFn: () => bookingAPI.getBookings(filters),
+    queryFn: () => bookingAPI.getBookings(filters).then(res => res.data),
     keepPreviousData: true,
     refetchInterval: 10000, // Refresh every 10 seconds for real-time updates
   });

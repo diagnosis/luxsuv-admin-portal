@@ -50,8 +50,8 @@ export default function UserTable({ data, isLoading, error, onPageChange, onRefr
     );
   }
 
-  const users = data?.data?.users || data?.users || [];
-  const pagination = data?.data?.pagination || data?.pagination || {};
+  const users = data?.users || [];
+  const pagination = data?.pagination || {};
 
   const handleSelectAll = (checked) => {
     if (checked) {

@@ -8,7 +8,7 @@ export default function CreateUserModal({ onClose, onSuccess }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const createUserMutation = useMutation({
-    mutationFn: (userData) => userAPI.createUser(userData).then(res => res.data),
+    mutationFn: (userData) => userAPI.createUser(userData),
     onSuccess: () => {
       onSuccess();
     },
