@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useCallback } from 'react';
 import { authAPI } from './api';
 
 export const useAuthStore = create(
@@ -96,6 +97,12 @@ export const useAuthStore = create(
           });
           return false;
         }
+      },
+
+      // Create a stable reference for checkAuth
+      useStableCheckAuth: () => {
+        const checkAuth = useAuthStore(state => state.checkAuth);
+        return useCallback(checkAuth, []);
       },
 
       clearError: () => set({ error: null })

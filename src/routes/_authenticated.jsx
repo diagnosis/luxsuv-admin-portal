@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, Navigate } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useAuthStore } from '../lib/auth';
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
@@ -11,11 +11,15 @@ export const Route = createFileRoute('/_authenticated')({
 function AuthenticatedLayout() {
   const { isAuthenticated, isLoading, checkAuth } = useAuthStore();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
+  const handleAuthCheck = useCallback(() => {
+    if (!isAuthenticated && !isLoading) {
       checkAuth();
     }
-  }, [checkAuth]);
+  }, [isAuthenticated, isLoading, checkAuth]);
+
+  useEffect(() => {
+    handleAuthCheck();
+  }, [handleAuthCheck]);
 
   if (isLoading) {
     return (

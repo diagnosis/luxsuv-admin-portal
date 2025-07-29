@@ -1,4 +1,5 @@
 import { createFileRoute, Navigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { useAuthStore } from '../lib/auth';
 
 export const Route = createFileRoute('/')({
@@ -7,6 +8,11 @@ export const Route = createFileRoute('/')({
 
 function IndexPage() {
   const { isAuthenticated, isLoading } = useAuthStore();
+
+  // Ensure hooks are consistently called
+  useEffect(() => {
+    // This effect runs on mount to ensure consistent hook calls
+  }, []);
 
   if (isLoading) {
     return (

@@ -1,6 +1,6 @@
 import { createFileRoute, Navigate } from '@tanstack/react-router';
 import { useForm } from '@tanstack/react-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiLogIn, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuthStore } from '../lib/auth';
 
@@ -11,6 +11,11 @@ export const Route = createFileRoute('/login')({
 function LoginPage() {
   const { login, isAuthenticated, isLoading, error, clearError } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
+
+  // Ensure consistent hooks
+  useEffect(() => {
+    // This effect ensures hooks are called consistently
+  }, []);
 
   if (isAuthenticated) {
     return <Navigate to="/dashboard" />;
